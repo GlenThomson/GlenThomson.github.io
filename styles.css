@@ -88,3 +88,22 @@ footer p{
 section{
     text-align: center;
 }
+
+
+
+
+
+
+
+
+/*css for pong game  */
+#pongBoard {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+    border: 1px solid #fff;
+    text-align: center;
+    margin-top: 20%;
+}
