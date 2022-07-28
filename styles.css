@@ -12,7 +12,13 @@ body{
     
 }
 
-
+button{
+    height: 60px;
+    width: 150px;
+    font-size: 20px;
+    background-color: beige;
+    border-radius: 10px;
+}
 .container{
     margin-left : auto;
     margin-right : auto;
@@ -23,7 +29,7 @@ body{
 header{
     text-align: center;
 
-    height : 118px;
+    height : 140px;
 }
 
 nav{
@@ -55,7 +61,7 @@ footer{
     height : 100px;
 }
 
-#kitten_photo{
+#glenthomson{
     width: 40%;
     height: 100%;
 }
@@ -98,8 +104,7 @@ section{
 
 /*css for pong game  */
 #pongBoard {
-    width: 100%;
-    height: 100%;
+
     position: relative;
     overflow: hidden;
     margin: auto;

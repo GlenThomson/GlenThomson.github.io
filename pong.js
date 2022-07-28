@@ -7,7 +7,7 @@ var hit_sound1 = new Audio('sounds/hit_sound1.wav');
 var lose_sound = new Audio('sounds/lose_sound.mp3');
 var hit_sound2 = new Audio('sounds/hit_sound2.wav');
 var scored_sound = new Audio('sounds/scored_sound.wav');
-
+var gameStarted = false;
 
 
 class Player{
@@ -56,12 +56,19 @@ class Ball {
     move() {
         this.x += this.speedX;
         this.y += this.speedY;
-        if ((this.y + this.radius > canvas.height || this.y - this.radius < 0)&&ball.timeSicneLastHit >5) {
-            this.speedY *= -1;
+        if (this.y + this.radius > canvas.height ) {
+            this.speedY = - Math.abs(this.speedY);
+            hit_sound2.play();
+            ball.timeSicneLastHit += 0;
+        }
+        else if (this.y - this.radius < 0) {
+            this.speedY = Math.abs(this.speedY);
             hit_sound2.play();
             ball.timeSicneLastHit += 0;
         }
     }
+    
+
     resetBall() {
         this.x = canvas.width/2;
         this.y = canvas.height/2;
@@ -73,13 +80,13 @@ class Ball {
 }
 
 function startGame(){
-    update()
+    setInterval(update,1000/frameRate);
 }
 
 function drawText() {
     context.font = "20px Arial";
     context.fillStyle = "white";
-    context.fillText("Player Score "+playerScore+"            Pong           "+"Computer Score " +computerScore,180,30);
+    context.fillText("Player Score "+playerScore+"            Pong           "+"Computer Score " +computerScore,250,30);
 }
 
 
@@ -193,8 +200,18 @@ function eventHandler(event){
 let ball = new Ball();
 let player1 = new Player(0, canvas.height/2, "green", 2);
 let player2 = new Player(canvas.width-player1.width, canvas.height/2, "purple",1.8);
-startGame()
-setInterval(update,1000/frameRate);
+
+
+document.getElementById('startButton').addEventListener("click", function(e) {
+    if(!gameStarted){
+        startGame();
+        gameStarted = true;
+    }
+}   
+);
+
+
+
 
 
 
